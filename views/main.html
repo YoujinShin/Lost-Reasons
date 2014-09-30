@@ -3,10 +3,24 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/leaflet.css"/>
   <style>
-    svg {
+/*    svg {
       background-color: lightskyblue;
-    }
+    }*/
+    html, body {
+	    height: 100%;
+	    font: 11px sans-serif;
+	}
+
+	.bigscreen {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+	}
+		
     .municipality {
         fill: #eee;
         stroke: #999;
@@ -17,8 +31,23 @@
   </style>
 </head>
 <body>
+   <div class="bigscreen" id="map"></div>
+
+
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://d3js.org/topojson.v0.min.js"></script>
+
+  <script src="/js/leaflet.js"></script> <!-- leaflet -->
+  <script src="http://d3js.org/queue.v1.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> <!-- jquery -->
+
+  <script src="korea.js" type="text/javascript"></script>
+
+
+
+
+  
+<!--   
   <script>
     var w = 800, h = 800;
     
@@ -41,5 +70,7 @@
         .attr('class', 'municipality');
     });
   </script>
+ -->
+
 </body>
 </html>
