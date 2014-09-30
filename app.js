@@ -6,7 +6,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
 
 // the ExpressJS App
@@ -24,7 +24,7 @@ app.configure(function(){
 
   // setup template engine - we're using Hogan-Express
   app.set('view engine', 'html');
-  app.set('layout','layout');
+  // app.set('layout','layout');
   app.engine('html', require('hogan-express')); // https://github.com/vol4ok/hogan-express
 
   app.use(express.favicon());
@@ -46,7 +46,7 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 
   // database - skipping until week 5
-  app.db = mongoose.connect(process.env.MONGOLAB_URI);
+  // app.db = mongoose.connect(process.env.MONGOLAB_URI);
   console.log("connected to database");
   
 });

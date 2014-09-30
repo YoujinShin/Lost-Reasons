@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    svg {
+      background-color: lightskyblue;
+    }
+    .municipality {
+        fill: #eee;
+        stroke: #999;
+    }
+    .municipality:hover {
+        fill: orange;
+    }
+  </style>
+</head>
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v0.min.js"></script>
+  <script>
+    var w = 800, h = 800;
+    
+    var proj = d3.geo.mercator()
+      .center([128.0, 35.9])
+      .scale(6500)
+      .translate([w/2, h/2]);
+
+    var path = d3.geo.path().projection(proj);
+
+    var svg = d3.select("body").append("svg")
+      .attr("width", w)
+      .attr("height", h);
+    
+    d3.json("skorea-municipalities-topo.json", function(error, kor) {
+      var municipalities = topojson.object(kor, kor.objects['skorea-municipalities-geo']);
+      svg.selectAll('path').data(municipalities.geometries)
+        .enter().append('path')
+        .attr('d', path)
+        .attr('class', 'municipality');
+    });
+  </script>
+</body>
+</html>
