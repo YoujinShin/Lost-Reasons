@@ -12,6 +12,23 @@
 	    height: 100%;
 	    font: 11px sans-serif;
 	}
+  #tooltip {
+      line-height: 150% !important;
+      position: absolute;
+      letter-spacing: 0px;
+      /*z-index: 10;*/
+      /*top: 100px;*/
+      visibility: hidden;
+      background-color: #fff;
+      font: 11px sans-serif;
+      padding: 12px;
+      padding-left: 16px;
+      box-shadow: 3px 3px 3px rgba(0,0,0,0.15);
+      border-radius: 0px; 
+      width: 140px;
+      text-align: left;
+      /*border: 0px solid grey;*/
+    }
 
 	.bigscreen {
 		position: absolute;
@@ -31,7 +48,7 @@
   </style>
 </head>
 <body>
-   <div class="bigscreen" id="map"></div>
+  <div class="bigscreen" id="map"></div>
 
 
   <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -42,9 +59,6 @@
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> <!-- jquery -->
 
   <script src="korea.js" type="text/javascript"></script>
-
-
-
 
   
 <!--   
