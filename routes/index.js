@@ -15,6 +15,10 @@ exports.index = function(req, res) {
 	res.render('main.html');
 }
 
+exports.test = function(req, res) {
+	console.log("test page requested");
+	res.render("test.html");
+}
 
 // /*
 // 	GET /
