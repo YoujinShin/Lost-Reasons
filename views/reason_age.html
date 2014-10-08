@@ -11,11 +11,13 @@ body{
 	/*font-weight: normal !important;*/
 }
 h1 {
-	font-size:22px;
+	font-size:20px;
 	color: #222222;
-	letter-spacing: 8px;
+	letter-spacing: 10px;
 	font-weight: 400;
-	padding-left: 40px;
+	/*padding-left: 50px;*/
+	text-align: center;
+	margin-left: -100px;
 }
 svg text{
 	font-size:11px;
@@ -25,9 +27,9 @@ rect{
 }
 </style>
 <body>
-<h1>LOST & REASON </h1>
+<h1>LOST & REASON</h1>
 
-<br>
+<br><br>
 <div id="age"></div>
 <div id="reason"></div>
 
@@ -35,34 +37,34 @@ rect{
 <script src="biPartite_yj.js"></script>
 <script>
 var data=[
-	['10','Seoul',16,0],
-	['20','Seoul',1278,4],
-	['30','Seoul',27,0],
-	['40','Seoul',58,0],
-	['40','Seoul',1551,15],
-	['50','Seoul',141,0],
-	['10','Seoul',5453,35],
-	['20','Seoul',683,1],
-	['30','Seoul',862,0],
-	['50','Seoul',6228,30],
-	['10','Chuncheon',15001,449],
-	['20','Chuncheon',527,3],
-	['30','Chuncheon',836,0],
-	['40','Chuncheon',28648,1419],
-	['60','Chuncheon',3,0],
-	['10','Chuncheon',13,0],
-	['20','Chuncheon',396,0],
-	['30','Chuncheon',362,0],
-	['40','Chuncheon',78,10],
-	['50','Dajeon',2473,32],
-	['20','Dajeon',2063,64],
-	['30','Dajeon',203,0],
-	['40','Dajeon',686,2],
-	['50','Dajeon',826,0],
-	['10','Dajeon',1738,110]
+	['10','SE',16,0],
+	['20','SE',1278,4],
+	['30','SE',27,0],
+	['40','SE',58,0],
+	['40','SE',1551,15],
+	['50','SE',141,0],
+	['10','SE',5453,35],
+	['20','SE',683,1],
+	['30','SE',862,0],
+	['50','SE',6228,30],
+	['10','CH',15001,449],
+	['20','CH',527,3],
+	['30','CH',836,0],
+	['40','CH',28648,1419],
+	['60','CH',3,0],
+	['10','CH',13,0],
+	['20','CH',396,0],
+	['30','CH',362,0],
+	['40','CH',78,10],
+	['50','KW',2473,32],
+	['20','KW',2063,64],
+	['30','KW',203,0],
+	['40','KW',686,2],
+	['50','KW',826,0],
+	['10','KW',1738,110]
 ];
 
-var width = 600, height = 430, margin ={b:0, t:50, l:170, r:50};
+var width = 1100, height = 430, margin ={b:0, t:40, l:170, r:50};
 
 var svg = d3.select("#age")
 	.append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
@@ -76,28 +78,9 @@ var svg = d3.select("#age")
 // svg.append("g")
 //     .attr("transform", "translate(" + margin.l + "," + margin.t + ")");
 
-
-// var svg2 = d3.select("#reason")
-// .append("svg2").attr('width',width).attr('height',(height+margin.b+margin.t))
-// .append("g").attr("transform","translate("+ margin.l +","+margin.t+")");
-
-// svg2.append("rect")
-//     .attr("width", "100%")
-//     .attr("height", "100%")
-//     .attr("fill", "pink");
-
-// svg2.append("g")
-//     .attr("transform", "translate(" + margin.l + "," + margin.t + ")");
-
-
-// var data = [ 
-// 	{data:bP.partData(sales_data,2), id:'SalesAttempts', header:["Channel","State", "Sales Attempts"]},
-// 	{data:bP.partData(sales_data,3), id:'Sales', header:["Channel","State", "Sales"]}
-// ];
-
 var datas = [ 
-	{data:bP.partData(data,2), id:'SalesAttempts', header:["Age","State", "AGE"]},
-	{data:bP.partData(data,3), id:'Sales', header:["Reason","State", "REASON"]}
+	{data:bP.partData(data,2), id:'SalesAttempts', header:["Reason","State", "2000"]},
+	{data:bP.partData(data,3), id:'Sales', header:["Reason","State", "2010"]}
 ];
 
 var age = [ 
@@ -108,9 +91,9 @@ var reason = [
 	{data:bP.partData(data,3), id:'Reason', header:["Reason","State", ""]}
 ];
 
-// bP.draw(datas,svg);
+bP.draw(datas,svg);
 // bP.draw(age, svg);
-bP.draw(reason, svg)
+// bP.draw(reason, svg)
 
 </script>
 </body>

@@ -1,9 +1,13 @@
 !function(){
 	var bP={};	
 	// var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
-	var b=30, bb=150, height=400, buffMargin=4, minHeight=14;
-	var c1=[-120, 40], c2=[-50, 145], c3=[-10, 188];
+	// var b=30, bb=160, height=400, buffMargin=4, minHeight=14;
+	// var c1=[-120, 40], c2=[-50, 145], c3=[-10, 188];
 	// var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
+	
+	var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
+	var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
+
 	var colors =["#3784ca", "#876fb9", "#d01042", "#ef5100", "#f4ce00", "#00853e"];
 	
 	bP.partData = function(data,p){
@@ -155,10 +159,10 @@
 	
 	function drawHeader(header, id){
 		d3.select("#"+id).append("g").attr("class","header").append("text").text(header[2])
-			.style("font-size","16").attr("x",108).attr("y",-20).style("text-anchor","middle")
+			.style("font-size","14").attr("x",108).attr("y",-20).style("text-anchor","middle")
 			.style("letter-spacing", '2px')
 			.style("fill","#222222")
-			.style("font-weight","normal");
+			.style("font-weight","bold");
 		
 		[0,1].forEach(function(d){
 			var h = d3.select("#"+id).select(".part"+d).append("g").attr("class","header");
