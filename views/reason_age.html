@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body{
+	font-family: sans-serif;
+	letter-spacing: 1px;
+	width:1200px;
+	margin:100px auto;
+	background-color: #f1f1f1;
+	/*background-color: #333333;*/
+	/*font-weight: normal !important;*/
+}
+h1 {
+	font-size:22px;
+	color: #222222;
+	letter-spacing: 8px;
+	font-weight: 400;
+	padding-left: 40px;
+}
+svg text{
+	font-size:11px;
+}
+rect{
+	shape-rendering:crispEdges;
+}
+</style>
+<body>
+<h1>LOST & REASON </h1>
+
+<br>
+<div id="age"></div>
+<div id="reason"></div>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="biPartite_yj.js"></script>
+<script>
+var data=[
+	['10','Seoul',16,0],
+	['20','Seoul',1278,4],
+	['30','Seoul',27,0],
+	['40','Seoul',58,0],
+	['40','Seoul',1551,15],
+	['50','Seoul',141,0],
+	['10','Seoul',5453,35],
+	['20','Seoul',683,1],
+	['30','Seoul',862,0],
+	['50','Seoul',6228,30],
+	['10','Chuncheon',15001,449],
+	['20','Chuncheon',527,3],
+	['30','Chuncheon',836,0],
+	['40','Chuncheon',28648,1419],
+	['60','Chuncheon',3,0],
+	['10','Chuncheon',13,0],
+	['20','Chuncheon',396,0],
+	['30','Chuncheon',362,0],
+	['40','Chuncheon',78,10],
+	['50','Dajeon',2473,32],
+	['20','Dajeon',2063,64],
+	['30','Dajeon',203,0],
+	['40','Dajeon',686,2],
+	['50','Dajeon',826,0],
+	['10','Dajeon',1738,110]
+];
+
+var width = 600, height = 430, margin ={b:0, t:50, l:170, r:50};
+
+var svg = d3.select("#age")
+	.append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
+	.append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
+
+// svg.append("rect")
+//     .attr("width", "100%")
+//     .attr("height", "100%")
+//     .attr("fill", "pink");
+
+// svg.append("g")
+//     .attr("transform", "translate(" + margin.l + "," + margin.t + ")");
+
+
+// var svg2 = d3.select("#reason")
+// .append("svg2").attr('width',width).attr('height',(height+margin.b+margin.t))
+// .append("g").attr("transform","translate("+ margin.l +","+margin.t+")");
+
+// svg2.append("rect")
+//     .attr("width", "100%")
+//     .attr("height", "100%")
+//     .attr("fill", "pink");
+
+// svg2.append("g")
+//     .attr("transform", "translate(" + margin.l + "," + margin.t + ")");
+
+
+// var data = [ 
+// 	{data:bP.partData(sales_data,2), id:'SalesAttempts', header:["Channel","State", "Sales Attempts"]},
+// 	{data:bP.partData(sales_data,3), id:'Sales', header:["Channel","State", "Sales"]}
+// ];
+
+var datas = [ 
+	{data:bP.partData(data,2), id:'SalesAttempts', header:["Age","State", "AGE"]},
+	{data:bP.partData(data,3), id:'Sales', header:["Reason","State", "REASON"]}
+];
+
+var age = [ 
+	{data:bP.partData(data,2), id:'Age', header:["Age","State", "AGE"]}
+];
+
+var reason = [ 
+	{data:bP.partData(data,3), id:'Reason', header:["Reason","State", ""]}
+];
+
+// bP.draw(datas,svg);
+// bP.draw(age, svg);
+bP.draw(reason, svg)
+
+</script>
+</body>
+
