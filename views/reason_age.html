@@ -6,6 +6,7 @@ body{
 	letter-spacing: 1px;
 	width:1200px;
 	margin:100px auto;
+	margin-top: 90px;
 	background-color: #f1f1f1;
 	/*background-color: #333333;*/
 	/*font-weight: normal !important;*/
@@ -17,7 +18,7 @@ h1 {
 	font-weight: 400;
 	/*padding-left: 50px;*/
 	text-align: center;
-	margin-left: -100px;
+	margin-left: 60px;
 }
 svg text{
 	font-size:11px;
@@ -64,7 +65,8 @@ var data=[
 	['10','KW',1738,110]
 ];
 
-var width = 1100, height = 430, margin ={b:0, t:40, l:170, r:50};
+// var width = 1100, height = 430, margin ={b:0, t:40, l:170, r:50};
+var width = 1100, height = 420, margin ={b:0, t:40, l:230, r:50};
 
 var svg = d3.select("#age")
 	.append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))

@@ -5,7 +5,7 @@
 	// var c1=[-120, 40], c2=[-50, 145], c3=[-10, 188];
 	// var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
 	
-	var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
+	var b=30, bb=150, height=400, buffMargin=1, minHeight=14;
 	var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
 
 	var colors =["#3784ca", "#876fb9", "#d01042", "#ef5100", "#f4ce00", "#00853e"];
@@ -121,8 +121,8 @@
 			.attr("x", 0).attr("y",function(d){ return d.middle-d.height/2; })
 			.attr("width",b).attr("height",function(d){ return d.height; })
 			.style("shape-rendering","auto")
-			.style("fill-opacity",0).style("stroke-width","1")
-			.style("stroke","white").style("stroke-opacity",0);
+			.style("fill-opacity",0).style("stroke-width","2")
+			.style("stroke","black").style("stroke-opacity",0);
 			// .style("stroke","black").style("stroke-opacity",0);
 			
 		mainbar.append("text").attr("class","barlabel")
