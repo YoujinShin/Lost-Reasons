@@ -98,8 +98,10 @@ queue()
 	.defer(d3.csv, 'rate_province.csv')
 	.await(ready);
 
+var temp = [];
+
 function ready(error, rate) {
-	// console.log(rate);
+	console.log(rate);
 
 	var datas = [ 
 		{data:bP.partData(data,2), id:'_2000', header:["Reason","State", "2000"]},
