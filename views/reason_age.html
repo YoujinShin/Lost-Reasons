@@ -47,6 +47,8 @@ rect{
 <div id="reason"></div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="biPartite_yj.js"></script>
 <script>
 var data=[
@@ -92,20 +94,45 @@ var svg = d3.select("#age")
 // svg.append("g")
 //     .attr("transform", "translate(" + margin.l + "," + margin.t + ")");
 
-var datas = [ 
-	{data:bP.partData(data,2), id:'SalesAttempts', header:["Reason","State", "2000"]},
-	{data:bP.partData(data,3), id:'Sales', header:["Reason","State", "2010"]}
-];
+queue()
+	.defer(d3.csv, 'rate_province.csv')
+	.await(ready);
 
-var age = [ 
-	{data:bP.partData(data,2), id:'Age', header:["Age","State", "AGE"]}
-];
+function ready(error, rate) {
+	// console.log(rate);
 
-var reason = [ 
-	{data:bP.partData(data,3), id:'Reason', header:["Reason","State", ""]}
-];
+	var datas = [ 
+		{data:bP.partData(data,2), id:'_2000', header:["Reason","State", "2000"]},
+		{data:bP.partData(data,3), id:'_2010', header:["Reason","State", "2010"]}
+	];
 
-bP.draw(datas,svg);
+	// console.log(data);
+	// console.log(bP.partData(data,2));
+
+	var reason = [ 
+		{data:bP.partData(data,3), id:'Reason', header:["Reason","State", ""]}
+	];
+
+	bP.draw(datas, svg);
+}
+
+// var datas = [ 
+// 	{data:bP.partData(data,2), id:'Age', header:["Reason","State", "2000"]},
+// 	{data:bP.partData(data,3), id:'Reason', header:["Reason","State", "2010"]}
+// ];
+
+// console.log(data);
+// console.log(bP.partData(data,2));
+
+// var age = [ 
+// 	{data:bP.partData(data,2), id:'Age', header:["Age","State", ""]}
+// ];
+
+// var reason = [ 
+// 	{data:bP.partData(data,3), id:'Reason', header:["Reason","State", ""]}
+// ];
+
+// bP.draw(datas, svg);
 // bP.draw(age, svg);
 // bP.draw(reason, svg)
 
