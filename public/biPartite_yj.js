@@ -5,10 +5,10 @@
 	// var c1=[-120, 40], c2=[-50, 145], c3=[-10, 188];
 	// var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
 	
-	var b=30, bb=150, height=400, buffMargin=1, minHeight=14;
-	var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
+	var b=20, bb=640, height=490, buffMargin=5, minHeight=14;
+	var c1=[-210, 60], c2=[-50, 250], c3=[-10, 290]; //Column positions of labels.
 
-	var colors =["#3784ca", "#876fb9", "#d01042", "#ef5100", "#f4ce00", "#00853e"];
+	var colors =["#3784ca", "#876fb9", "#d01042", "#ef5100", "#f4ce00", "#00853e", "blue", "grey", "orange"];
 	
 	bP.partData = function(data,p){
 		var sData={};

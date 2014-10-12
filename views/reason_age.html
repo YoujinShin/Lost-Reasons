@@ -16,18 +16,21 @@ h1 {
 	font-size:22px;
 	color: #222222;
 	letter-spacing: 8px;
-	font-weight: 500;
+	font-weight: 600;
 	/*padding-left: 50px;*/
 	/*text-align: center;*/
-	margin-left: 90px;
+	margin-left: 20px;
 	margin-bottom: 0px;
 }
 p {
 	font-size: 12px;
-	margin-left: 90px;
-	color: #555555;
+	margin-top: 20px;
+	margin-left: 20px;
+	color: #777;
+	font-weight: 400;
 	/*padding-top: 20px;*/
 	letter-spacing: 2px;
+	/*text-align: center;*/
 }
 svg text{
 	font-size:11px;
@@ -40,16 +43,21 @@ rect{
 <h1>LOSTS AND REASONS</h1>
 <br>
 <p>South Korea has been known as the 'Suicide Capital' for a decade.  </p>
-<p>The reasons for it has been visualized and compared between in year 2000 and 2010.</p>
+<p>In 2010, it recorded the highest suicide rate in history.  This visualization shows the reported reasons for it compared with regional information.</p>
+<p>In each reagion, the reasons for suicide show the similar distribution.  The mental health and money take more that 50% of them.</p>
 
 <br><br>
 <div id="age"></div>
 <div id="reason"></div>
 
+
+<p>Sources: South Korea </p>
+
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="biPartite_yj.js"></script>
+
 <script>
 var data=[
 	['10','SE',16,0],
@@ -80,27 +88,36 @@ var data=[
 ];
 
 // var width = 1100, height = 430, margin ={b:0, t:40, l:170, r:50};
-var width = 1100, height = 420, margin ={b:0, t:40, l:230, r:50};
+var width = 1300, height = 530, margin ={b:0, t:30, l:230, r:50};
 
 var svg = d3.select("#age")
 	.append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
 	.append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
 
-// svg.append("rect")
-//     .attr("width", "100%")
-//     .attr("height", "100%")
-//     .attr("fill", "pink");
-
-// svg.append("g")
-//     .attr("transform", "translate(" + margin.l + "," + margin.t + ")");
 var familyById = d3.map();
 var illById = d3.map();
+var mentalById = d3.map();
+var moneyById = d3.map();
+var employById = d3.map();
+var relById = d3.map();
+var beById = d3.map();
+var abuseById = d3.map();
+var othersById = d3.map();
+var unById = d3.map();
 
 queue()
 	.defer(d3.csv, 'rate_province.csv')
 	.defer(d3.csv, 'rate_province.csv', function(d) {
 		familyById.set(d.id+"family", +d.family);
 		illById.set(d.id+"illness", +d.illness);
+		mentalById.set(d.id+"mental_health", +d.mental_health);
+		moneyById.set(d.id+"money", +d.money);
+		employById.set(d.id+"employment", +d.employment);
+		relById.set(d.id+"relationship", +d.relationship);
+		beById.set(d.id+"bereavement", +d.bereavement);
+		abuseById.set(d.id+"abuse", +d.abuse);
+		othersById.set(d.id+"others", +d.others);
+		unById.set(d.id+"unknown", +d.unknown);
 	})
 	.await(ready);
 
@@ -110,7 +127,7 @@ function ready(error, rate_province) {
 	// console.log(rate);
 	// rate.push()
 	getArrayList(rate_province);
-	console.log(rate);
+	// console.log(rate);
 
 	// var datas = [ 
 	// 	{data:bP.partData(data,2), id:'_2000', header:["Reason","State", "2000"]},
@@ -123,21 +140,51 @@ function ready(error, rate_province) {
 
 	// bP.draw(datas, svg);
 
+	var data_rate = [ 
+		{data:bP.partData(rate,2), id:'_2000', header:["Reason","State", "2000"]},
+		{data:bP.partData(rate,3), id:'_2010', header:["Reason","State", "2010"]}
+	];
 
+	var data_reason = [
+		{data:bP.partData(rate,3), id:'_2010', header:["Reason","State", ""]}
+	];
 
-
-	// var data_rate = [ 
-	// 	{data:bP.partData(rate,2), id:'_2000', header:["Reason","State", "2000"]},
-	// 	{data:bP.partData(rate,3), id:'_2010', header:["Reason","State", "2010"]}
-	// ];
-
+	bP.draw(data_reason, svg);
 	// bP.draw(data_rate, svg);
 }
 
 function getArrayList(temp) {
 	temp.forEach(function(d) {
-		console.log(d.id);
-		rate.push(d.id, "family", familyById.get(d.id+"family"), 10);
+		// console.log(d.id);
+		var f = ["family", d.id, 10, familyById.get(d.id+"family")];
+		rate.push(f);
+
+		var i = ["illness", d.id, 10, illById.get(d.id+"illness")];
+		rate.push(i);
+
+		var m = ["mental health", d.id, 10, mentalById.get(d.id+"mental_health")];
+		rate.push(m);
+
+		var mo = ["money", d.id, 10, moneyById.get(d.id+"money")];
+		rate.push(mo);
+
+		var em = ["employment", d.id, 10, employById.get(d.id+"employment")];
+		rate.push(em);
+
+		var re = ["relationship", d.id, 10, relById.get(d.id+"relationship")];
+		rate.push(re);
+
+		var be = ["bereavement", d.id, 10, beById.get(d.id+"bereavement")];
+		rate.push(be);
+
+		var ab = ["abuse", d.id, 10, abuseById.get(d.id+"abuse")];
+		rate.push(ab);
+
+		var ot = ["others", d.id, 10, othersById.get(d.id+"others")];
+		rate.push(ot);
+
+		var un = ["unknown", d.id, 10, unById.get(d.id+"unknown")];
+		rate.push(un);
 	});
 	// rate.push(d.id, "family", familyById.get(d.id+"family"), 10);
 }
