@@ -93,29 +93,53 @@ var svg = d3.select("#age")
 
 // svg.append("g")
 //     .attr("transform", "translate(" + margin.l + "," + margin.t + ")");
+var familyById = d3.map();
+var illById = d3.map();
 
 queue()
 	.defer(d3.csv, 'rate_province.csv')
+	.defer(d3.csv, 'rate_province.csv', function(d) {
+		familyById.set(d.id+"family", +d.family);
+		illById.set(d.id+"illness", +d.illness);
+	})
 	.await(ready);
 
-var temp = [];
+var rate = [];
 
-function ready(error, rate) {
+function ready(error, rate_province) {
+	// console.log(rate);
+	// rate.push()
+	getArrayList(rate_province);
 	console.log(rate);
 
-	var datas = [ 
-		{data:bP.partData(data,2), id:'_2000', header:["Reason","State", "2000"]},
-		{data:bP.partData(data,3), id:'_2010', header:["Reason","State", "2010"]}
-	];
+	// var datas = [ 
+	// 	{data:bP.partData(data,2), id:'_2000', header:["Reason","State", "2000"]},
+	// 	{data:bP.partData(data,3), id:'_2010', header:["Reason","State", "2010"]}
+	// ];
 
-	// console.log(data);
-	// console.log(bP.partData(data,2));
+	// var reason = [ 
+	// 	{data:bP.partData(data,3), id:'Reason', header:["Reason","State", ""]}
+	// ];
 
-	var reason = [ 
-		{data:bP.partData(data,3), id:'Reason', header:["Reason","State", ""]}
-	];
+	// bP.draw(datas, svg);
 
-	bP.draw(datas, svg);
+
+
+
+	// var data_rate = [ 
+	// 	{data:bP.partData(rate,2), id:'_2000', header:["Reason","State", "2000"]},
+	// 	{data:bP.partData(rate,3), id:'_2010', header:["Reason","State", "2010"]}
+	// ];
+
+	// bP.draw(data_rate, svg);
+}
+
+function getArrayList(temp) {
+	temp.forEach(function(d) {
+		console.log(d.id);
+		rate.push(d.id, "family", familyById.get(d.id+"family"), 10);
+	});
+	// rate.push(d.id, "family", familyById.get(d.id+"family"), 10);
 }
 
 // var datas = [ 
