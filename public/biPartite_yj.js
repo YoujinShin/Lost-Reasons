@@ -8,7 +8,7 @@
 	var b=20, bb=640, height=490, buffMargin=5, minHeight=14;
 	var c1=[-210, 60], c2=[-50, 250], c3=[-10, 290]; //Column positions of labels.
 
-	var colors =["#3784ca", "#876fb9", "#d01042", "#ef5100", "#f4ce00", "#00853e", "blue", "grey", "orange"];
+	var colors =["#c33825", "#525976", "#ed872f", "#9cb36a", "#3c4534", "#bdd324", "#517088", "#cfcd48", "#f39149", "#5f1827"];
 	
 	bP.partData = function(data,p){
 		var sData={};
