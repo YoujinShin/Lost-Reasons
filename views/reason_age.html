@@ -65,7 +65,7 @@ rect{
 
 <div class="line"><br></div>
 
-<p>Sources: South Korea </p>
+<p>Sources: 2011 report from the National Police Agency from South Korea</p>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
@@ -170,34 +170,34 @@ function ready(error, rate_province) {
 function getArrayList(temp) {
 	temp.forEach(function(d) {
 		// console.log(d.id);
-		var f = ["family", d.id, 10, familyById.get(d.id+"family")];
+		var f = ["Family", d.id, 10, familyById.get(d.id+"family")];
 		rate.push(f);
 
-		var i = ["illness", d.id, 10, illById.get(d.id+"illness")];
+		var i = ["Illness", d.id, 10, illById.get(d.id+"illness")];
 		rate.push(i);
 
-		var m = ["mental health", d.id, 10, mentalById.get(d.id+"mental_health")];
+		var m = ["Mental health", d.id, 10, mentalById.get(d.id+"mental_health")];
 		rate.push(m);
 
-		var mo = ["money", d.id, 10, moneyById.get(d.id+"money")];
+		var mo = ["Money", d.id, 10, moneyById.get(d.id+"money")];
 		rate.push(mo);
 
-		var em = ["employment", d.id, 10, employById.get(d.id+"employment")];
+		var em = ["Employment", d.id, 10, employById.get(d.id+"employment")];
 		rate.push(em);
 
-		var re = ["relationship", d.id, 10, relById.get(d.id+"relationship")];
+		var re = ["Relationship", d.id, 10, relById.get(d.id+"relationship")];
 		rate.push(re);
 
-		var be = ["bereavement", d.id, 10, beById.get(d.id+"bereavement")];
+		var be = ["Bereavement", d.id, 10, beById.get(d.id+"bereavement")];
 		rate.push(be);
 
-		var ab = ["abuse", d.id, 10, abuseById.get(d.id+"abuse")];
+		var ab = ["Abuse", d.id, 10, abuseById.get(d.id+"abuse")];
 		rate.push(ab);
 
-		var ot = ["others", d.id, 10, othersById.get(d.id+"others")];
+		var ot = ["Others", d.id, 10, othersById.get(d.id+"others")];
 		rate.push(ot);
 
-		var un = ["unknown", d.id, 10, unById.get(d.id+"unknown")];
+		var un = ["Unknown", d.id, 10, unById.get(d.id+"unknown")];
 		rate.push(un);
 	});
 	// rate.push(d.id, "family", familyById.get(d.id+"family"), 10);
